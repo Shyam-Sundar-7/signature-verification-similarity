@@ -1,0 +1,10 @@
+torch
+ruff
+lightning
+pandas
+scikit-learn
+torchvision
+opencv-python
+notebook
+matplotlib
+torch-summary
