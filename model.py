@@ -88,7 +88,7 @@ class CustomDataset(Dataset):
 
 
 class CustomDataModule(l.LightningDataModule):
-    def __init__(self, csv_file, transform=None, batch_size=32):
+    def __init__(self, csv_file, transform=None, batch_size=64):
         super().__init__()
         self.csv_file = csv_file
         self.transform = transform
@@ -98,10 +98,10 @@ class CustomDataModule(l.LightningDataModule):
         self.dataset = CustomDataset(self.csv_file, transform=self.transform)
 
     def train_dataloader(self):
-        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True)
+        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True,num_workers=5)
 
     def val_dataloader(self):
-        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False)
+        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False,num_workers=6)
     
 
 class LightningModel(l.LightningModule):
@@ -136,7 +136,7 @@ class LightningModel(l.LightningModule):
         self.log("train_loss", loss)
         self.train_acc(predicted_labels, true_labels)
         self.log(
-            "train_acc", self.train_acc, prog_bar=True, on_epoch=True, on_step=False
+            "train_acc", self.train_acc, prog_bar=True, on_epoch=True, on_step= True
         )
         return loss
 
