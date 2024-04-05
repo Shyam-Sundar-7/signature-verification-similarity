@@ -48,10 +48,11 @@ class SiameseNetwork(nn.Module):
         #stack output1 and output2
         output1=output1.view(64,-1)
         output2=output2.view(64,-1)
-        
+        print(output1.shape,output2.shape)
         output = torch.abs(output2-output1)
         # Pass flattened output through the fully connected layers
         output = self.fc(output)
+        print(output.shape)
         return output.squeeze()
 
 
@@ -83,10 +84,6 @@ class CustomDataset(Dataset):
 
         return image_like1-image1,image_like2-image2, label
 
-
-
-
-
 class CustomDataModule(l.LightningDataModule):
     def __init__(self, csv_file, transform=None, batch_size=64):
         super().__init__()
@@ -103,6 +100,8 @@ class CustomDataModule(l.LightningDataModule):
     def val_dataloader(self):
         return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False,num_workers=6)
     
+    def test_dataloader(self):
+        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False,num_workers=6)
 
 class LightningModel(l.LightningModule):
     def __init__(self, model, learning_rate):
@@ -140,12 +139,12 @@ class LightningModel(l.LightningModule):
         )
         return loss
 
-    # def validation_step(self, batch, batch_idx):
-    #     loss, true_labels, predicted_labels = self._shared_step(batch)
+    def validation_step(self, batch, batch_idx):
+        loss, true_labels, predicted_labels = self._shared_step(batch)
 
-    #     self.log("val_loss", loss, prog_bar=True)
-    #     self.val_acc(predicted_labels, true_labels)
-    #     self.log("val_acc", self.val_acc, prog_bar=True)
+        self.log("val_loss", loss, prog_bar=True)
+        self.val_acc(predicted_labels, true_labels)
+        self.log("val_acc", self.val_acc, prog_bar=True)
 
     def test_step(self, batch, batch_idx):
         _, true_labels, predicted_labels = self._shared_step(batch)

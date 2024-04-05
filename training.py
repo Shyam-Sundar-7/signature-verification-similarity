@@ -18,7 +18,7 @@ if __name__=="__main__":
 
     trainer = l.Trainer(
         max_epochs=15,
-        accelerator="gpu",
+        accelerator="cpu",
         devices="auto",
         deterministic=True,
 
