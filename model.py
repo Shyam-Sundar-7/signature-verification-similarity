@@ -157,13 +157,13 @@ class CustomDataModule(l.LightningDataModule):
         self.dataset = CustomDataset(self.csv_file, transform=self.transform)
 
     def train_dataloader(self):
-        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True,num_workers=5)
+        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=True)
 
     def val_dataloader(self):
-        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False,num_workers=6)
+        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False)
     
     def test_dataloader(self):
-        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False,num_workers=6)
+        return DataLoader(self.dataset, batch_size=self.batch_size, shuffle=False)
 
 class LightningModel(l.LightningModule):
     def __init__(self, model, learning_rate):

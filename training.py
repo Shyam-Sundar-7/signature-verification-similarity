@@ -9,7 +9,8 @@ torch.manual_seed(123)
 if __name__=="__main__":
     transform = transforms.Compose([
     transforms.Resize((256, 256)),
-    transforms.ToTensor()])
+    transforms.ToTensor(),
+    transforms.Lambda(lambda img: img / 255.0)])
 
     dm = CustomDataModule('CEDAR_train.csv',batch_size=64,transform=transform)
 
