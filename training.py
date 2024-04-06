@@ -1,5 +1,6 @@
 import lightning as l
 import torch
+from lightning.pytorch.callbacks import ModelCheckpoint
 from torchvision import transforms
 from model import SiameseNetwork,LightningModel,CustomDataModule
 
@@ -16,7 +17,7 @@ if __name__=="__main__":
 
     lightning_model = LightningModel(model=pytorch_model, learning_rate=0.00005)
 
-    checkpoint=l.ModelCheckpoint(monitor="val_acc",mode="max",save_top_k=1)
+    checkpoint=ModelCheckpoint(monitor="val_acc",mode="max",save_top_k=1)
 
     trainer = l.Trainer(callbacks=[checkpoint],
         max_epochs=3,
