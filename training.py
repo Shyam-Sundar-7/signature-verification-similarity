@@ -14,10 +14,12 @@ if __name__=="__main__":
 
     pytorch_model = SiameseNetwork()
 
-    lightning_model = LightningModel(model=pytorch_model, learning_rate=0.05)
+    lightning_model = LightningModel(model=pytorch_model, learning_rate=0.00005)
 
-    trainer = l.Trainer(
-        max_epochs=15,
+    checkpoint=l.ModelCheckpoint(monitor="val_acc",mode="max",save_top_k=1)
+
+    trainer = l.Trainer(callbacks=[checkpoint],
+        max_epochs=3,
         accelerator="cpu",
         devices="auto",
         deterministic=True,

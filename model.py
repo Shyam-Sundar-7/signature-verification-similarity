@@ -9,8 +9,6 @@ from torch.utils.data import DataLoader
 from PIL import Image
 import pandas as pd
 
-
-#create the Siamese Neural Network
 class SiameseNetwork1(nn.Module):
 
     def __init__(self):
@@ -112,11 +110,11 @@ class SiameseNetwork(nn.Module):
         #stack output1 and output2
         output1=output1.view(output1.shape[0],-1)
         output2=output2.view(output2.shape[0],-1)
-        print(output1.shape,output2.shape)
+        # print(output1.shape,output2.shape)
         output = torch.abs(output2-output1)
         # Pass flattened output through the fully connected layers
         output = self.fc(output)
-        print(output.shape)
+        # print(output.shape)
         return output.squeeze()
 
 
@@ -179,7 +177,7 @@ class LightningModel(l.LightningModule):
         self.save_hyperparameters(ignore=["model"])
 
         self.train_acc = torchmetrics.Accuracy(task="binary")
-        # self.val_acc = torchmetrics.Accuracy(task="binary")
+        self.val_acc = torchmetrics.Accuracy(task="binary")
         self.test_acc = torchmetrics.Accuracy(task="binary")
 
     def forward(self, x,y):

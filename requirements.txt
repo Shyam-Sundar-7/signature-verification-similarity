@@ -7,4 +7,4 @@ torchvision
 opencv-python
 notebook
 matplotlib
-torch-summary
+img2vec_pytorch
