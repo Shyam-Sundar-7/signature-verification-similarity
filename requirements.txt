@@ -7,4 +7,6 @@ torchvision
 opencv-python
 notebook
 matplotlib
-img2vec_pytorch
+torch-summary
+streamlit
+gradio

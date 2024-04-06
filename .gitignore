@@ -5,3 +5,4 @@ __pycache__
 .venv
 CEDAR.zip
 lightning_logs
+best_model.ckpt
