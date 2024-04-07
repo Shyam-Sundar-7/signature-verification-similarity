@@ -9,6 +9,9 @@ Manual signature verification is a time-consuming and error-prone process. The g
 ## Problem Description:
 The task is to train a machine learning model to differentiate between genuine and forged handwritten signatures based on a dataset of signature images. The model should return a match percentage between the two input signatures.
 
+# Dataset Used: CEDAR
+This dataset contains signatures by 55 people written in Latin script. Each person has 24 genuine and 24 forged signatures.
+
 ## Implementation:
 - **SiasemeNetwork1 (PyTorch Model)**
   - Binary Cross Entropy as the loss function
