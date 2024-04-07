@@ -32,8 +32,8 @@ class Inference_prediction2():
             output,sim=self.model.forward(self.image(input1),self.image(input2))
         else:
             output,sim=self.model.forward(self.image1(input1),self.image1(input2))
-        return F.pairwise_distance(output, sim).item()*100
+        return (1-F.pairwise_distance(output, sim).item())*100
 
 if __name__ == "__main__":
-    inference = Inference_prediction2("saved_trained_model_ckpt/contro_model.ckpt")
-    print(inference.predict("CEDAR/20/forgeries_20_1.png","CEDAR/11/original_11_3.png"))
+    inference = Inference_prediction2("models/best_model2.ckpt")
+    print(inference.predict("CEDAR/11/original_11_1.png","CEDAR/11/original_11_3.png"))

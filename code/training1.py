@@ -22,7 +22,7 @@ if __name__=="__main__":
 
 
     checkpoint_callback = ModelCheckpoint(
-        dirpath="./models",filename="best_model",
+        dirpath="./models",filename="best_model1",
         save_top_k=1,monitor="val_loss", mode="min"
     )
     early_stopping_callback = EarlyStopping(
@@ -31,8 +31,8 @@ if __name__=="__main__":
 
     trainer = l.Trainer(callbacks=[checkpoint_callback,early_stopping_callback],
         max_epochs=6,
-        logger=CSVLogger(save_dir="logs/", name="contro_logs"),
-        accelerator="cpu",
+        logger=CSVLogger(save_dir="logs/", name="model1_logs"),
+        accelerator="gpu",
         devices="auto",
     )
 

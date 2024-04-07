@@ -40,9 +40,9 @@ class Inference_prediction1():
         else:
             output,_=self.model.forward(self.image1(input1),self.image1(input2))
 
-        return (1-output.item())*100
+        return output.item()*100
 
 if __name__ == "__main__":
-    inference = Inference_prediction1("saved_trained_model_ckpt/best_model.ckpt")
+    inference = Inference_prediction1("models/best_model1.ckpt")
     
-    print(inference.predict("CEDAR/20/forgeries_20_1.png","CEDAR/11/original_11_3.png"))
+    print(inference.predict("CEDAR/11/original_11_1.png","CEDAR/11/original_11_3.png"))
