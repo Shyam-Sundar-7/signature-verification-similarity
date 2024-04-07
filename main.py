@@ -1,10 +1,7 @@
 import streamlit as st
-import numpy as np
-import PIL
 from PIL import Image
-from io import BytesIO
-import requests
-from inference import Inference_prediction
+from code.inference1 import Inference_prediction1
+from code.inference2 import Inference_prediction2
 
 # Define the Streamlit app
 def main():
@@ -14,8 +11,8 @@ def main():
 
     # Get the two images from the user
     col1, col2 = st.columns(2)
-    img1 = col1.file_uploader("Upload Image 1", type=["jpg", "jpeg", "png"])
-    img2 = col2.file_uploader("Upload Image 2", type=["jpg", "jpeg", "png"])
+    img1 = col1.file_uploader("Upload Testing Signature", type=["jpg", "jpeg", "png"])
+    img2 = col2.file_uploader("Upload Original Sinature", type=["jpg", "jpeg", "png"])
 
     # Display the uploaded images
     if img1:
@@ -29,13 +26,20 @@ def main():
     if img1 is not None and img2 is not None:
         if st.button("Compute Similarity"):
             # Extract features from the images
-            inference = Inference_prediction("best_model.ckpt")
-        
-            x,d=inference.predict(img1,img2)
+            inference1 = Inference_prediction("best_model.ckpt")
+            x1=inference1.predict(img1,img2)
+            inference2 = Inference_prediction2("contro_model.ckpt")
+            x2=inference2.predict(img1,img2)
 
             # Display the similarity score
-            st.markdown(f"The similarity score between the two images is **{d:.2f}**.")
-            g="Forged" if x>50 else "Original"
+            st.markdown("The Disimilarity score between the two images ")
+            st.write("The Larger the score, Higher the Disimilarity")
+
+            col1, col2= st.columns(2)
+            col1.metric(label="Siaseme Network with Binary cross entryopy", value=x1)
+            col2.metric(label="Siaseme Network with ContrastiveLoss", value=x2) 
+
+            g="Forged" if (x1+x2)/2>50 else "Original"
             st.markdown(f"The Testing Signature is {g}")
 
 # Run the Streamlit app

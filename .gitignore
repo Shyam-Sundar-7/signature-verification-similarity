@@ -1,8 +1,7 @@
 CEDAR
-BHSig260-Hindi
 __pycache__
 .ruff_cache
 .venv
 CEDAR.zip
 lightning_logs
-best_model.ckpt
+saved trained model ckpt
