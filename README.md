@@ -19,6 +19,12 @@ The task is to train a machine learning model to differentiate between genuine a
     - training1.py - training code
     - inference1.py - Indference code
 
+    | Train Acc | Val Acc | Test Acc |
+    |---|---|---|
+    | 98.59%  | 98.08%  | 98.11%  |
+
+
+
 - **SiameseNetwork2 (PyTorch Model)**
   - Contrastive Loss as the loss function
   - Two images are sent to the same CNN and followed by a feed-forward network with shared weights
@@ -27,6 +33,10 @@ The task is to train a machine learning model to differentiate between genuine a
     - Model2.py - The codes for the pytorch and pytorch lightning structures
     - training2.py - training code
     - inference2.py - Indference code
+    
+    | Train Acc | Val Acc | Test Acc |
+    |---|---|---|
+     65.07%  | 64.88%  | 65.00%  | 
 
 
 
