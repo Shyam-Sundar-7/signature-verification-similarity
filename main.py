@@ -26,9 +26,9 @@ def main():
     if img1 is not None and img2 is not None:
         if st.button("Compute Similarity"):
             # Extract features from the images
-            inference1 = Inference_prediction("best_model.ckpt")
+            inference1 = Inference_prediction1("saved_trained_model_ckpt/best_model.ckpt")
             x1=inference1.predict(img1,img2)
-            inference2 = Inference_prediction2("contro_model.ckpt")
+            inference2 = Inference_prediction2("saved_trained_model_ckpt/contro_model.ckpt")
             x2=inference2.predict(img1,img2)
 
             # Display the similarity score

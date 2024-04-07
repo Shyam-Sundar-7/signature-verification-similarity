@@ -102,9 +102,9 @@ class CustomDataModule2(l.LightningDataModule):
         self.batch_size = batch_size
 
     def setup(self, stage=None):
-        self.train_dataset = CustomDataset1("data\CEDAR_train.csv", transform=self.transform)
-        self.val_dataset = CustomDataset1("data\CEDAR_val.csv", transform=self.transform)
-        self.test_dataset = CustomDataset1("data\CEDAR_test.csv", transform=self.transform)
+        self.train_dataset = CustomDataset1("data/CEDAR_train.csv", transform=self.transform)
+        self.val_dataset = CustomDataset1("data/CEDAR_val.csv", transform=self.transform)
+        self.test_dataset = CustomDataset1("data/CEDAR_test.csv", transform=self.transform)
         
 
     def train_dataloader(self):

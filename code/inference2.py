@@ -1,4 +1,4 @@
-from model2 import LightningModel2,SiameseNetwork2
+from code.model2 import LightningModel2,SiameseNetwork2
 from PIL import Image
 import torchvision.transforms as transforms
 import torch
