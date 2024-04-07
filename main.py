@@ -33,14 +33,28 @@ def main():
 
             # Display the similarity score
             st.markdown("The Disimilarity score between the two images ")
-            st.write("The Larger the score, Higher the Disimilarity")
+            st.markdown("The Larger the score, Higher the Disimilarity")
 
             col1, col2= st.columns(2)
             col1.metric(label="Siaseme Network with Binary cross entryopy", value=x1)
             col2.metric(label="Siaseme Network with ContrastiveLoss", value=x2) 
 
-            g="Forged" if (x1+x2)/2>50 else "Original"
-            st.markdown(f"The Testing Signature is {g}")
+            st.markdown("The Testing Signature is")
+            
+                        # Displaying text in a green color b
+            if (x1+x2)/2 > 50:
+                st.markdown(
+                '<div style="background-color:red; padding:10px">'
+                '<h2 style="color:black;text-align:center;">Forged</h2>'
+                '</div>',
+                unsafe_allow_html=True)
+            else:
+                st.markdown(
+                '<div style="background-color:lightgreen; padding:10px">'
+                '<h2 style="color:black;text-align:center;">Original</h2>'
+                '</div>',
+                unsafe_allow_html=True)
+
 
 # Run the Streamlit app
 if __name__ == "__main__":
