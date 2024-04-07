@@ -53,3 +53,9 @@ The task is to train a machine learning model to differentiate between genuine a
     ```
     streamlit run main.py
     ```
+
+# Short Demo of the streamlit application
+
+
+https://github.com/Shyam-Sundar-7/signature-verification-similarity/assets/101181076/7119939f-3512-4d8b-a9fb-d91f11b80a3f
+
