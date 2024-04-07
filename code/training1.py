@@ -32,11 +32,11 @@ if __name__=="__main__":
     trainer = l.Trainer(callbacks=[checkpoint_callback,early_stopping_callback],
         max_epochs=6,
         logger=CSVLogger(save_dir="logs/", name="contro_logs"),
-        accelerator="gpu",
+        accelerator="cpu",
         devices="auto",
     )
 
-    trainer.fit(model=lightning_model, datamodule=dm,ckpt_path="models/best_model.ckpt")
+    trainer.fit(model=lightning_model, datamodule=dm)
     train_acc = trainer.validate(dataloaders=dm.train_dataloader())[0]["val_acc"]
     val_acc = trainer.validate(datamodule=dm)[0]["val_acc"]
     test_acc = trainer.test(datamodule=dm)[0]["test_acc"]

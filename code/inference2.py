@@ -1,4 +1,4 @@
-from code.model2 import LightningModel2,SiameseNetwork2
+from model2 import LightningModel2,SiameseNetwork2
 from PIL import Image
 import torchvision.transforms as transforms
 import torch.nn.functional as F
@@ -35,5 +35,5 @@ class Inference_prediction2():
         return F.pairwise_distance(output, sim).item()*100
 
 if __name__ == "__main__":
-    inference = Inference_prediction2("contro_model.ckpt")
+    inference = Inference_prediction2("saved_trained_model_ckpt/contro_model.ckpt")
     print(inference.predict("CEDAR/20/forgeries_20_1.png","CEDAR/11/original_11_3.png"))

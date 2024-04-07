@@ -41,7 +41,6 @@ def main():
 
             st.markdown("The Testing Signature is")
             
-                        # Displaying text in a green color b
             if (x1+x2)/2 > 50:
                 st.markdown(
                 '<div style="background-color:red; padding:10px">'

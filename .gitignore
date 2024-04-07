@@ -5,3 +5,5 @@ __pycache__
 CEDAR.zip
 lightning_logs
 saved_trained_model_ckpt
+code\__pycache__
+logs

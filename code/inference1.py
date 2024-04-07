@@ -1,4 +1,4 @@
-from code.model1 import LightningModel1,SiameseNetwork1
+from model1 import LightningModel1,SiameseNetwork1
 from PIL import Image
 import torchvision.transforms as transforms
 import torch
@@ -43,6 +43,6 @@ class Inference_prediction1():
         return (1-output.item())*100
 
 if __name__ == "__main__":
-    inference = Inference_prediction1("best_model.ckpt")
+    inference = Inference_prediction1("saved_trained_model_ckpt/best_model.ckpt")
     
     print(inference.predict("CEDAR/20/forgeries_20_1.png","CEDAR/11/original_11_3.png"))
