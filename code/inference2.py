@@ -1,10 +1,7 @@
 from code.model2 import LightningModel2,SiameseNetwork2
 from PIL import Image
 import torchvision.transforms as transforms
-import torch
-import torch.nn as nn
 import torch.nn.functional as F
-import numpy as np
 class Inference_prediction2():
     def __init__(self, model_path):
         super().__init__()
@@ -31,7 +28,7 @@ class Inference_prediction2():
         return image1.unsqueeze(0)
 
     def predict(self,input1,input2):
-        if type(input1) == str:
+        if isinstance(input1, str):
             output,sim=self.model.forward(self.image(input1),self.image(input2))
         else:
             output,sim=self.model.forward(self.image1(input1),self.image1(input2))
