@@ -22,10 +22,10 @@ This dataset contains signatures by 55 people written in Latin script. Each pers
     - training1.py - training code
     - inference1.py - Indference code
 
-    | Train Acc | Val Acc | Test Acc |
-    |---|---|---|
-    | 98.59%  | 98.08%  | 98.11%  |
-
+    | Train Acc | Val Acc | Test Acc | Model parameters | Model size |
+    |---|---|---|---|---|
+    | 98.59%  | 98.08%  | 98.11%  | 8.4M | 96MB|
+ 
 
 
 - **SiameseNetwork2 (PyTorch Model)**
@@ -37,10 +37,11 @@ This dataset contains signatures by 55 people written in Latin script. Each pers
     - training2.py - training code
     - inference2.py - Indference code
     
-    | Train Acc | Val Acc | Test Acc |
-    |---|---|---|
-     65.07%  | 64.88%  | 65.00%  | 
+    | Train Acc | Val Acc | Test Acc | Model parameters | Model size |
+    |---|---|---|---|---|
+     65.07%  | 64.88%  | 65.00%  | 2.2M | 24.8MB |
 
+# 
 
 
 ## Installation:
